@@ -7,7 +7,7 @@
 
 class Probability {
 public:
-    Probability(double initial);
+    Probability(float initial);
     Probability operator -() { throw "Negative probabilities not allowed."; }
     operator float() const { return value; }
 
@@ -18,7 +18,7 @@ private:
     Probability() : value(0) { }
 };
 
-Probability::Probability(double initial) : value(float(initial))
+Probability::Probability(float initial) : value(initial)
 {
     if ((value < 0) || (value > 1))
         throw "Probability out of range [0,1]";
@@ -26,7 +26,7 @@ Probability::Probability(double initial) : value(float(initial))
 
 Probability operator "" _p(long double literal)
 {
-    Probability ret(literal);
+    Probability ret((float)literal);
     return ret;
 }
 
